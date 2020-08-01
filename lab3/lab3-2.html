@@ -1,0 +1,81 @@
+
+<html>
+	<head>
+		<title>CPS530 Lab 3</title>
+		<!-- Added external styles -->
+		<link rel="stylesheet" type="text/css" href="css/lab3-2.css">
+		<!-- Added bootstrap -->
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+
+	<body style="font-family:verdana,arial,helvetica;color:#336699;font-size:11pt;" class="container-fluid">
+		<!-- Added id to logo image. -->
+		<img src="img/internet.gif" width="120" align="right" id="logo">
+		<!-- Added id to title header -->
+		<h1 id="header">Lab #3</h1>
+		<h6 id="name">Owen Goodwin - 500909196</h6>
+
+		<p class="col">
+			<b>Objectives:</b>
+			<ol>
+				<li>Be acquainted with responsive design.</li>
+				<li>Use advanced CSS for formatting.</li>
+				<li>Try a few responsive front-end frameworks</li>
+			</ol>
+		</p>
+
+		<p class="col">
+			<b>Activities:</b>
+			<ol>
+				<li>Using Bootstrap, remove the frame containing the menu of the lab manual and replace it with Bootstrap buttons in the grid system (only the link to lab 3 need to be be functional).</li>
+				<li>The <a href="http://www.csszengarden.com/">CSS Zen Garden</a> project changes a page by having the same HTML code and only changing the CSS. In the same manner, re-format *this* webpage (the lab 3 description - this very lab page is located at http://cps530.scs.ryerson.ca/labs/lab03.html) using creative graphics and CSS. Use the view source function of your browser to copy/paste the HTML code.</li>
+				<li style="margin-top:10px;">Write a simple page using <a href="https://www.w3schools.com/w3css/default.asp">W3.CSS</a>. You page must contain images and text and be fully responsive (try your page on a phone in portrait and landscape).</li>
+			</ol>
+		</p>
+
+		<p class="col">
+			<b>Requirements:</b>
+			<ol>
+				<li>For activities 1 and 2: Do not add any text (content) to this page except:
+					<ul>
+						<li><b>class="<i>classname</i>"</b> or <b>id="<i>classname</i>"</b> as attributes to tags;</li>
+						<li>the Bootstrap links and extra elements required to create grids and buttons (like div tags required by Bootstrap);</li>
+						<li>the &lt;link&gt; tag to your style sheet;</li>
+						<li>your name and student number.</li>
+					</ul>
+				<li>You can add your own images but you cannot remove the exisiting images (the lab logo which you can resize or reposition if you wish).</li>
+				<li>Your css file must be external.</li>
+				<li>Try a lot of things, experiment!</li>
+			</ol>
+		</p>
+
+		<p id="submission">
+			<b>Submission:</b>
+			<br>
+			Submit the URL of your main page and your login and/or password (if password protected - not mandatory) using Brightspace (my.ryerson.ca).
+			<br>
+			<br>
+			<em style="color:#aa0000;">Due on or before Tuesday October 22, 5:00 p.m. - No late submissions will be accepted.</em>
+		</p>
+
+
+		<!-- Random empty p tags show up for whatever reason, even though they don't exist in the source (even on the original page too). -->
+		<!-- There are 4 p tags in the source, but 3 empty ones show up after each list. My guess is that each list ends up splitting it's parent p in two, so I guess you shouldn't put lists inside paragraphs. -->
+		<!-- This little bit of JS will yeet the empty p tags -->
+		<script type="text/javascript">
+			elems = document.getElementsByTagName('p');
+			console.log(elems);
+			for (var i = elems.length - 1; i >= 0; i--) {
+				if (elems[i].innerHTML == ""){
+					elems[i].parentNode.removeChild(elems[i]);
+				}
+			}
+			elems = document.getElementsByTagName('p');
+			console.log(elems);
+		</script>
+	</body>
+</html>
+
+

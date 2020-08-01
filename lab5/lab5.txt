@@ -1,0 +1,67 @@
+Owen Goodwin (500909196)
+Lab 5 - 11/04/19
+
+-------------------------------------------------------------------------------------------------------
+PART 1: http://the404.nl/cps530/lab5/part1.html 
+PHP code as follows:
+
+        <?php   
+            session_start();//Access the global vars
+            #We use a session variable to count the number of hits.
+            if($_SESSION["count"] == null){
+                $_SESSION["count"] = 0;#If no counter exists, start one.
+            }
+            $_SESSION["count"]++;#Counter goes up by one, cause we've viewed the page again.
+
+            $cols = $_POST["cols"];#Grab the user's input values
+            $rows = $_POST["rows"];
+
+            #Make sure the number of rows and columns are between 3 and 12.
+            if ($rows >= 3 && $rows <= 12 && $cols >= 3 && $cols <= 12){
+                $column = array();#initialize array to create our first column, with numbers from 1 to whatever the user gave us
+                for ($i=1; $i < $rows+1; $i++) { 
+                    array_push($column, $i);#For-loop counter to construct the first column
+                }
+                $row = array();#Same as before, but we're making the first row
+                for ($i=1; $i < $cols+1; $i++) { 
+                    array_push($row, $i);
+                }
+
+                #Nested loops to go through each pair
+                #Does some multiplication, then spits out the correct value to construct our table.
+                foreach ($column as $colnum) {
+                    foreach ($row as $rownum){
+                        echo "<div>".$rownum*$colnum."</div>";
+                    }
+                    echo "<br>";
+                }
+            }
+            else {
+                echo "Invalid size! Dimensions must be between 3 & 12.";
+            }
+
+            #Display the number of hits.
+            echo "<br><br>";
+            echo "You've visited this page ".$_SESSION["count"]." times this session.";
+            
+        ?>
+
+
+-----------------------------------------------------------------------------------------------------------------
+PART 2: http://the404.somee.com/?Colour=red 
+Query string takes any named css color value.
+ASP code is as follows:
+
+<%
+    If Request.Cookies("lastvisit") = "" Then
+        Response.Write("First visit. Welcome!")
+    Else
+        last = Request.Cookies("lastvisit")
+        Response.Write("Your last visit was: " & last)
+    End if
+    Response.Cookies("lastvisit") = Now
+%>
+<br>
+<%
+    Response.Write("Right now, it is " & Now)
+%>

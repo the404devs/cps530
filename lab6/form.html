@@ -4,18 +4,25 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
     </head>
     <body>
-        <form>
+        <h2>Lab 6</h2>
+        <h2>Owen Goodwin (500909196)</h2>
+        <h4>11/11/19</h4>
+        <hr>
+        <form id="form" action="cgi-bin/lab6.py" method="POST">
             <label for="name">Full Name:</label>
-            <input id="name" type="text">
+            <!-- name must have only letters - need to validate -->
+            <input id="name" type="text" name="name" required>
             <br>
             <label for="address">Address:</label>
-            <input id="address" type="text">
-            <br>Phone number:</label>
-            <input id="phone" type="tel">
+            <input id="address" type="text" name="address" required>
             <br>
-            <input id="submit" type="submit" onclick="validate()">
+            <label for "phone">Phone number:</label>
+            <input id="phone" type="tel" name="phone" required>
+            <br>
         </form>
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <button id="submit" onclick="submit('rb')">Submit (Ruby)</button>
+        <button id="submit" onclick="submit('py')">Submit (Python)</button>
+        <script type="text/javascript" src="js/form.js"></script>
 
     </body>
 </html>

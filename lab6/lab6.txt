@@ -1,0 +1,148 @@
+CPS530 Lab 6
+Owen Goodwin (500909196)
+11/11/19
+
+Part 1 - http://the404.nl/cps530/lab6/database.php (using database on my own webserver)
+PHP code is as follows:
+    <?php
+        // database config
+        $servername = "localhost";
+        $username = "id925603_the404db";
+        $password = "EvilArchie15";// don't look at my password :(
+        $database = "id925603_testingdb";
+
+        // Create connection
+        $con = new mysqli($servername, $username, $password, $database);
+
+        // Check connection
+        if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
+        }
+        $result = mysqli_query($con, "SELECT * FROM Pictures WHERE Location LIKE '%ontario%'");
+        echo "<link rel='stylesheet' type='text/css' href='css/lab6-database.css'>";
+        echo "<h1 id='header'>Lab #6</h1>";
+        echo "<h6 id='name'>Owen Goodwin - 500909196</h6>";
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='img-box'>";
+                echo "<img src='".$row["url"]."' width=100px> <br>";
+                echo "Subject: " . $row["subject"]."<br>";
+                echo "Taken: ".$row["location"].", ".$row["date_taken"];
+                echo "</div>";
+                echo "<br>";
+            }
+        } else {
+            echo "0 results";
+        }
+    ?>
+---------------------------------------------------------------------------------------------------------------------------------
+Part 2 - http://www2.scs.ryerson.ca/~ogoodwin/form.html (sadly my webserver doesn't allow ruby or python)
+Ruby script:
+    #!/usr/bin/ruby
+
+    require 'cgi'
+    cgi = CGI.new
+
+    puts "Content-type: text/html\n\n"
+    puts "This is the Ruby script.<br>"
+    puts cgi['name'].split.map(&:capitalize).join(' ')
+    puts "<br>"
+    puts cgi['address'].split.map(&:capitalize).join(' ')
+    puts "<br>"
+    $phone =  cgi['phone']
+    $arr = $phone.split('-')
+    puts "<link rel='stylesheet' type='text/css' href='../css/lab6-scripts.css'>"
+    puts "<span id='segment1' style='color:red; display:none'>"+$arr[0]+"</span>"
+    puts "<span id='segment2' style='color:green; display:none'>"+$arr[1]+"</span>"
+    puts "<span id='dash' style='color:black; display:none'>-</span>"
+    puts "<span id='segment3' style='color:blue; display:none'>"+$arr[2]+"</span>"
+
+    puts "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>"
+    puts "<script type='text/javascript' src='../js/rb-fades.js'></script>"
+
+
+
+Python script:
+    #!/usr/bin/python
+    import os, sys
+
+    POST={}
+    args=sys.stdin.read().split('&')
+
+    for arg in args: 
+        t=arg.split('=')
+        
+        if len(t)>1: k, v=arg.split('='); POST[k]=v
+
+    print "Content-type: text/html\n\n"
+    print "This is the Python script.<br>"
+    print POST.get('name').title().replace("+", " ")
+    print "<br>"
+    print POST.get('address').title().replace("+", " ")
+    print "<br>"
+    phone = POST.get('phone').replace("%28", "(").replace("%29", ")")
+    arr = phone.split('-')
+    print("<link rel='stylesheet' type='text/css' href='../css/lab6-scripts.css'>")
+    print("<span id='segment1' style='color:red; display:inline'>" + arr[0] + "</span>")
+    print("<span id='segment2' style='color:green; display:inline'>" + arr[1] + "</span>")
+    print("<span id='dash' style='color:black; display:inline'>-</span>")
+    print("<span id='segment3' style='color:blue; display:inline'>" + arr[2] + "</span>")
+
+    print "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>"
+    print "<script type='text/javascript' src='../js/py-fades.js'></script>"
+
+
+
+Javascript snippets
+
+    JS for form.html (js/form.js)
+        //auto-format phone input
+        //this also makes it not accept letters
+        $('#phone').mask("(999)-999-9999",{placeholder:""});
+
+        //Function to validate name input, make sure it only has letters
+        function validate(){
+            if(document.getElementById('name').value.match(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/)){
+                return true;
+            }
+            return false;
+        }
+
+        //Fires when one of the submit buttons is hit
+        //Given an arg to determine which script to send the form to.
+        function submit(ext){
+            if (validate()){//Validate name input
+                $("#form").attr('action', 'cgi-bin/lab6.'+ext);//Set the target of the form
+                $("#form").submit();//submit the form to whichever script the user clicked
+            }
+            else{
+                alert("Name is incorrectly formatted.");//Validation failed.
+            } 
+        }
+
+
+    JS for Ruby script (js/rb-fades.js)
+        function fades(){
+            $('#segment1').fadeIn(500);
+            $('#segment2').fadeIn(1500);
+            $('#dash').fadeIn(2500);
+            $('#segment3').fadeIn(2500);
+        }
+        $(function(){fades()});
+
+
+    JS for Python script (js/py-fades.js)
+        function fades(){
+            /* I'm too lazy to animate all of the segements,
+            so I just animate the first one. 
+            Since the css sets the first one to display:inline, 
+            nobody will ever know the difference.
+            
+            Unless they read my code, that is*/
+            $('#segment1').animate({'margin-left':'250px'},2000);
+            $('#segment1').animate({'margin-left':'0px'},2000);
+            window.setTimeout(function() { fades() }, 4000);
+        }
+        $(function(){fades()});

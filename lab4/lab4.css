@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+@font-face {
+    font-family: "Camaraderie";
+    src: url("Camaraderie.otf");
+}
+@font-face {
+    font-family: "SuperMario256";
+    src: url("SuperMario256.ttf");
+}
+
+body{
+	text-align: center;
+	font-family: Roboto;
+	margin: 0;
+	background-color: #151824;
+	color: #e3bac7;
+}
+
+h1{
+	font-family: "Audiowide";
+	/*Would have used my standard 404 font, but apparently it's not on Google Fonts anymore? RIP me.*/
+
+	font-size: 2em;
+	color: #151824;
+	-webkit-text-stroke: #b20acb 2px;
+	text-decoration: underline;
+	text-decoration-color: #b20acb;
+    padding: 10px;
+	border-bottom: 1px white solid;
+}
+
+.mario-font{
+	font-family: "SuperMario256";
+}
+
+.tiny{
+	font-size: 0.5em;
+}
+
+.radio-label{
+	display: inline-block;
+	transform: translateY(-3px);
+}
+
+.formInput{
+	color: #e3bac7;
+	border: 1px solid #b20acb;
+	border-radius: 5px;
+	background-color: #151824;
+	font-size: 1.25em;
+	font-family: Roboto;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.formInput:hover{
+	background-color: #2e3440;
+	transition: 0.1s all;
+}
+
+.checkmark {
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	background-image: url("../img/UNCHECKED.png");
+	background-size: 16px 16px;
+	border-radius: 50%;
+	z-index: -1;
+	transform: translate(-20px, 2px);
+}
+
+.radio, .checkbox{
+	opacity: 0;
+}
+.radio:checked ~ .checkmark{
+	background-image: url("../img/RADIO_CHECKED.png");
+}
+
+.content{
+	width: 500px;
+	border:1px solid white;
+	display: inline-block;
+	padding: 10px;
+}

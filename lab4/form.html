@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 4 </title>
+	<link rel="stylesheet" type="text/css" href="css/lab4.css">
+</head>
+<body>
+	<h1 class="mario-font">Mario Survey</h1>
+	<form action="cgi-bin/form.cgi" method="post">
+		<label for="txtFirst">First Name:</label>
+		<input class="formInput" type="text" name="txtFirst" required>
+		<br>
+		<label for="txtLast">Last Name:</label>
+		<input class="formInput" type="text" name="txtLast" required>
+		<br>
+		<label for="txtAge">Age:</label>
+		<input class="formInput" type="number" name="txtAge" required>
+		<br>
+		<div style="display: inline; margin-right: 10px; margin-bottom: 10px;">
+			<label class="radio-label" for="radGender">Male</label>
+			<input class="formInput radio" type="radio" name="radGender" value="Male" required>
+			<span class="checkmark"></span>
+		</div>
+		<div style="display: inline; margin-right: 10px; margin-bottom: 10px;">
+			<label class="radio-label" for="radGender">Female</label>
+			<input class="formInput radio" type="radio" name="radGender" value="Female" required>
+			<span class="checkmark"></span>
+		</div>
+		<div style="display: inline; margin-right: 10px; margin-bottom: 10px;">
+			<label class="radio-label" for="radGender">Other</label>
+			<input class="formInput radio" type="radio" name="radGender" value="Other" required>
+			<span class="checkmark"></span>
+		</div>
+		
+		<br>
+		<label for="gameSel">Favourite 3D Mario Game:</label>
+		<select class="formInput" name="gameSel">
+			<!-- use value to grab a corresponding mario image -->
+			<option value="SM64">64 (1996)</option>
+			<option value="SMS">Sunshine (2002)</option>
+			<option value="SMG">Galaxy (2007)</option>
+			<option value="SMG2">Galaxy 2 (2010)</option>
+			<option value="SM3L">3D Land (2011)</option>
+			<option value="SM3W">3D World (2013)</option>
+			<option value="SMO">Odyssey (2017)</option>
+		</select>
+		<br>
+		<br>
+		<button type="submit" class="formInput"><span>Register</span></button>
+	</form>
+</body>
+</html>

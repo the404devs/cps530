@@ -16,6 +16,7 @@
             $cols = $_POST["cols"];#Grab the user's input values
             $rows = $_POST["rows"];
 
+            #Make sure the number of rows and columns are between 3 and 12.
             if ($rows >= 3 && $rows <= 12 && $cols >= 3 && $cols <= 12){
                 $column = array();#initialize array to create our first column, with numbers from 1 to whatever the user gave us
                 for ($i=1; $i < $rows+1; $i++) { 
@@ -38,8 +39,10 @@
             else {
                 echo "Invalid size! Dimensions must be between 3 & 12.";
             }
+
+            #Display the number of hits.
             echo "<br><br>";
-            echo "You've visted this page ".$_SESSION["count"]." times this session.";
+            echo "You've visited this page ".$_SESSION["count"]." times this session.";
             
         ?>
     </body>
